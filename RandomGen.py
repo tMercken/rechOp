@@ -26,7 +26,6 @@ def GenerateArriveeRandom():
     un = xnArrivee / m
 #   nbArrivee = math.floor((6 - 0) * un +0)
     nbArrivee = math.floor(6 * un)
-    print nbArrivee
     return nbArrivee
     
 def generateDS():
