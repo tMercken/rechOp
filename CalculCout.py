@@ -13,7 +13,7 @@ nbStationMin = 4
 def CalculCout (nbStation, tabCout):
     
     #init
-    tabStation = [Client()]*nbStation
+    tabStation = [Client(-1, False)]*nbStation
     fileAbsolu = []
     fileEjecte = []
     fileOrdinaire = []
@@ -21,7 +21,7 @@ def CalculCout (nbStation, tabCout):
     
     while(temps < tempsSimulation):
         #première partie: s'occuper de m'arriver des clients
-        arriveeClient = GenerateArriveeRandom()        
+        arriveeClient = GenerateArriveeRandom()       
         putClientInFile(fileAbsolu, fileOrdinaire, arriveeClient)
         
         #ensuite, triez station et fileAbsolue puis mettre les clients dedans
@@ -36,7 +36,7 @@ def CalculCout (nbStation, tabCout):
         #calculCout
         cumOrdinaire = len(fileOrdinaire) + len(fileEjecte)
         coutStat = GetCoutStation(tabStation)
-        tabCout[nbStation - nbStationMin] += cumOrdinaire*25/60 + len(fileAbsolu) *40/60 + coutStat
+        tabCout[nbStation - nbStationMin] += cumOrdinaire*(float(25)/60) + len(fileAbsolu) *(float(40)/60) + coutStat
         
         temps += 1
         
@@ -61,23 +61,25 @@ def putClientInFile(fileAbsolu, fileOrdinaire, arriveeClient):
     
 def GetCoutStation(tabStation):
     i = 0
-    cout = 0
-    for station in tabStation:
-        if station.dureeService <= 0:
-            cout += 20/60
+    coutS = 0.0
+    while i < len(tabStation):
+        if tabStation[i].dureeService <= 0:
+            coutS += float(20)/(60)
             
         else:
-            if station.isAbsolu:
-                cout += 40/60
+            if tabStation[i].isAbsolu:
+                coutS += float(40)/(60)
                 
             else:
-                cout += 25/60
+                coutS += float(25)/(60)                
                 
-            cout += 35/60
-            
+            coutS += float(35)/(60)
+            print coutS         
         
+        i += 1    
     
-    return cout
+    print coutS
+    return coutS
                 
         
         
