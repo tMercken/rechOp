@@ -1,10 +1,11 @@
 #!/usr/bin/python
-# -*-coding:Latin-1 -*
+# -*-coding:utf-8 -*
 
 import os
 from TraiterFileAbsolu import *
 from Client import *
 from RandomGen import *
+from TraiterFileOrdinaire import *
 
 tempsSimulation = 960
 nbStationMin = 4
@@ -30,12 +31,12 @@ def CalculCout (nbStation, tabCout):
         if (fileAbsolu):
             TraiterFileAbsolu(nbStation, tabStation, fileAbsolu, fileEjecte)
         
-        TraiterFileOrdinaire()
+        TraiterFileOrdinaire(nbStation, tabStation, fileEjecte, fileOrdinaire)
         
         #calculCout
-        cumOrdinaire = fileOrdinaire.Length() + fileEjecte.Length()
+        cumOrdinaire = len(fileOrdinaire) + len(fileEjecte)
         coutStat = GetCoutStation(tabStation)
-        tabCout[nbStation - nbStationMin] += cumOrdinaire*25/60 + fileAbsolu *40/60 + coutStat
+        tabCout[nbStation - nbStationMin] += cumOrdinaire*25/60 + len(fileAbsolu) *40/60 + coutStat
         
         temps += 1
         
@@ -48,13 +49,13 @@ def putClientInFile(fileAbsolu, fileOrdinaire, arriveeClient):
     i = 0
     while i < nbAbsolu:
         dureeServ = generateDS()
-        fileAbsolu.append(dureeServ, True)
+        fileAbsolu.append(Client(dureeServ, True))
         i += 1
     
     i = 0
     while i < nbOrdinaire:
         dureeServ = generateDS()
-        fileOrdinaire.append(dureeServ, False)
+        fileOrdinaire.append(Client(dureeServ, False))
         i += 1
         
     

@@ -3,14 +3,20 @@ from CalculCout import *
 from Sortie import *
 
 nbStationMax = 30
-nbStation = 4
-tabCout = [0]*nbStationMax
+nbStationMin = 4
+tabCout = [0]*(nbStationMax-nbStationMin)
 
 def main():
-	
-	while nbStation < nbStationMax :
-		CalculCout(nbStation,tabCout)
-		nbStation += 1
+    nbStation = nbStationMin
+    print 'go'
+    while nbStation <= nbStationMax :
+        CalculCout(nbStation,tabCout)
+        nbStation += 1
 
-	RechercheMin(tabCout)
-	SortirTabCout(tabCout)
+    print 'end'
+    RechercheMin(tabCout)
+    SortirTabCout(tabCout)
+    print 'end2'
+    
+    
+main()

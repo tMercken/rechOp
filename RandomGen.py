@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*-coding:Latin-1 -*
+# -*-coding:utf-8 -*
 
 import os
 import math
