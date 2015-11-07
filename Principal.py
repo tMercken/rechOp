@@ -4,7 +4,7 @@ from Sortie import *
 
 nbStationMax = 30
 nbStationMin = 4
-tabCout = [0]*(nbStationMax-nbStationMin)
+tabCout = [0]*(1 + nbStationMax - nbStationMin)
 
 def main():
     nbStation = nbStationMin
