@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*-coding:utf-8 -*
+# -*-coding:Latin-1 -*
 
 import os
 from TraiterFileAbsolu import *
@@ -73,12 +73,10 @@ def GetCoutStation(tabStation):
             else:
                 coutS += float(25)/(60)                
                 
-            coutS += float(35)/(60)
-            print coutS         
+            coutS += float(35)/(60)       
         
         i += 1    
     
-    print coutS
     return coutS
                 
         

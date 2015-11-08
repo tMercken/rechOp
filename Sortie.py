@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*-coding:utf-8 -*
+# -*-coding:Latin-1 -*
 
 import os
 from CalculCout import nbStationMin  

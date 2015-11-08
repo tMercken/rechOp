@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*-coding:utf-8 -*
+# -*-coding:Latin-1 -*
 
 def TraiterFileOrdinaire(nbStation,tabStation,fileEjecte,fileOrdinaire):
     tabStation.sort(key = lambda client: client.dureeService)
