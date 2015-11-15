@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*-coding:Latin-1 -*
+# -*-coding:utf-8 -*
 
 import os
 from CalculCout import nbStationMin  
@@ -34,10 +34,10 @@ def SortirTabCout(tabCout):
         print >>fSortie, nbStationMin + i
         
         fSortie.write('  cout : ')
-        print >>fSortie, tabCout[i]
+        print >>fSortie,tabCout[i]
         fSortie.write('\n')
         i += 1
-    
+        
     fSortie.close()
     
 

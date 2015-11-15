@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*-coding:Latin-1 -*
+# -*-coding:utf-8 -*
 
 import os
 from TraiterFileAbsolu import *
@@ -36,7 +36,7 @@ def CalculCout (nbStation, tabCout):
         #calculCout
         cumOrdinaire = len(fileOrdinaire) + len(fileEjecte)
         coutStat = GetCoutStation(tabStation)
-        tabCout[nbStation - nbStationMin] += cumOrdinaire*(float(25)/60) + len(fileAbsolu) *(float(40)/60) + coutStat
+        tabCout[nbStation - nbStationMin] += cumOrdinaire * (float(25)/60) + len(fileAbsolu) * (float(40)/60) + coutStat
         
         temps += 1
         
@@ -62,6 +62,7 @@ def putClientInFile(fileAbsolu, fileOrdinaire, arriveeClient):
 def GetCoutStation(tabStation):
     i = 0
     coutS = 0.0
+
     while i < len(tabStation):
         if tabStation[i].dureeService <= 0:
             coutS += float(20)/(60)
@@ -73,11 +74,16 @@ def GetCoutStation(tabStation):
             else:
                 coutS += float(25)/(60)                
                 
-            coutS += float(35)/(60)       
+            coutS += float(35)/(60)
+                 
         
-        i += 1    
+        i += 1
+    
+    
     
     return coutS
+    
+    
                 
         
         

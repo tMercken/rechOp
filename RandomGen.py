@@ -1,13 +1,17 @@
 #!/usr/bin/python
-# -*-coding:Latin-1 -*
+# -*-coding:utf-8 -*
 
 import os
 import math
+import sys
 
-m = 256.00
+#m = sys.maxint+1.00
+m = sys.maxint+1
+#2147483648
+
 a = 17
 c = 53
-x0 = 144
+x0 = 144.00
 
 global xnArrivee
 global xnDuree
@@ -18,22 +22,54 @@ xnDuree = x0
 xnAbsolu = x0
 
 def randomGen(xn):
-    return ((a * xn + c) % m)
+    return ((a * xn + c)%m)
 
 def GenerateArriveeRandom():
     global xnArrivee    
     xnArrivee = randomGen(xnArrivee)
     un = xnArrivee / m
-#   nbArrivee = math.floor((6 - 0) * un +0)
-    nbArrivee = math.floor(6 * un)
-    return nbArrivee
+#   
+    if(un < 0.08):
+        return 0
+    else:
+        if(un < 0.11):
+            return 1
+        else:
+            if(un < 0.16):
+                return 2
+            else:
+                if(un < 0.68):
+                    return 3
+                else:
+                    if(un < 0.85):
+                        return 4
+                    else:
+                        return 5                    
+            
     
 def generateDS():
     global xnDuree    
     xnDuree = randomGen(xnDuree)
     unDuree = xnDuree / m    
-    dureeService = 1 + math.floor(6 * unDuree)
-    return dureeService
+    
+    if(unDuree < 0.03):
+        return 1
+    else:
+        if(unDuree < 0.08):
+            return 2
+        else:
+            if(unDuree < 0.11):
+                return 3
+            else:
+                if(unDuree < 0.28):
+                    return 4
+                else:
+                    if(unDuree < 0.59):
+                        return 5
+                    else:
+                        return 6 
+                    
+                    
 
 def GenerateAbsolu(arriveeClient):
     global xnAbsolu
@@ -51,6 +87,17 @@ def GenerateAbsolu(arriveeClient):
     return nbAbsolu
 
 
+#i = 0
+#mv = 144.00
+#while i < 25:
+#    mv = randomGen(mv)
+#    print (mv / m)
+#    i += 1
+
+#while i < 25:
+#    print GenerateArriveeRandom()
+#    i += 1
+    
 
         
 
