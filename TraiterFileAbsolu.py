@@ -2,40 +2,33 @@
 # -*-coding:utf-8 -*
 
 import os
-from Client import *   
+from Client import * 
+from TraiterFileOrdinaire import *  
    
 def TraiterFileAbsolu (nbStation, tabStation, fileAbsolu, fileEjecte):
+    tabStation.sort(key = lambda client: client.dureeService)
+    fileAbsolu.sort(key = lambda client: client.dureeService)
     i=0
-    while (i<nbStation):
-        if fileAbsolu:
-            if (tabStation[i].dureeService <= 0):
-                InsertAbsolu(i, tabStation, fileAbsolu)
-            
-            else:
-                if (tabStation[i].isAbsolu):
-                    j = nbStation-1
-                    while(fileAbsolu and j != i):
-                        if(tabStation[j].isAbsolu):
-                            EjecterClient(j, tabStation, fileEjecte)
-                            InsertAbsolu(i, tabStation, fileAbsolu)
-                            
-                        j -= 1
-                    
-                
-            
-        else:
-            return
-        
+
+    while (i < nbStation and tabStation[i].dureeService <= 0 and fileAbsolu):
+        if (tabStation[i].dureeService <= 0):
+            AjouterClient(tabStation, i, fileAbsolu)
+
         i += 1
-                        
-    
-def InsertAbsolu(i, tabStation, fileAbsolu):    
-    tabStation.insert(i, fileAbsolu[0])
-    del tabStation[i+1]
-    del fileAbsolu[0]
-    
-    
-def EjecterClient(i, tabStation, fileEjecte):  
+
+    j = nbStation - 1
+
+
+    while (j > i and fileAbsolu):
+        if(tabStation[j].isAbsolu == False):
+            EjecterClient(tabStation, j, fileEjecte)
+            AjouterClient(tabStation, j, fileAbsolu)
+
+        j -= 1
+        
+        
+
+def EjecterClient(tabStation, i, fileEjecte):  
     fileEjecte.append(tabStation[i])
     
     

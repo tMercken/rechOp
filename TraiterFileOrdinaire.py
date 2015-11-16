@@ -10,9 +10,10 @@ def TraiterFileOrdinaire(nbStation,tabStation,fileEjecte,fileOrdinaire):
     while i < nbStation:
         if tabStation[i].dureeService <= 0:
             if fileEjecte:
-                AjouterEjecter(tabStation,i,fileEjecte)
+                AjouterClient(tabStation,i,fileEjecte)
             else:
-                AjouterOrdinaire(tabStation, i, fileOrdinaire)
+                if fileOrdinaire :
+                    AjouterClient(tabStation, i, fileOrdinaire)
             
         
     
@@ -24,8 +25,7 @@ def AjouterEjecter(tabStation, i, fileEjecte):
     del tabStation[i+1]
     del fileEjecte[0]
 
-def AjouterOrdinaire(tabStation, i, fileOrdinaire):
-    if fileOrdinaire :
-        tabStation.insert(i,fileOrdinaire[0])
-        del tabStation[i+1]
-        del fileOrdinaire[0]
+def AjouterClient(tabStation, i, fileClient):    
+    tabStation.insert(i,fileClient[0])
+    del tabStation[i+1]
+    del fileClient[0]

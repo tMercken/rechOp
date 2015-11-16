@@ -24,10 +24,6 @@ def CalculCout (nbStation, tabCout):
         arriveeClient = GenerateArriveeRandom()       
         putClientInFile(fileAbsolu, fileOrdinaire, arriveeClient)
         
-        #ensuite, triez station et fileAbsolue puis mettre les clients dedans
-        tabStation.sort(key = lambda client: client.dureeService)
-        fileAbsolu.sort(key = lambda client: client.dureeService)
-        
         if (fileAbsolu):
             TraiterFileAbsolu(nbStation, tabStation, fileAbsolu, fileEjecte)
         
