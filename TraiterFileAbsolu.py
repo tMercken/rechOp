@@ -19,7 +19,7 @@ def TraiterFileAbsolu (nbStation, tabStation, fileAbsolu, fileEjecte):
     j = nbStation - 1
 
 
-    while (j > i and fileAbsolu):
+    while (j >= i and fileAbsolu):
         if(tabStation[j].isAbsolu == False):
             EjecterClient(tabStation, j, fileEjecte)
             AjouterClient(tabStation, j, fileAbsolu)

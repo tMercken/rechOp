@@ -8,6 +8,7 @@ from Sortie import *
 nbStationMax = 30
 nbStationMin = 4
 tabCout = [0]*(1 + nbStationMax-nbStationMin)
+InitFichierSortirStation()
 
 def main():
     nbStation = nbStationMin

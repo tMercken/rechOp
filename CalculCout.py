@@ -6,6 +6,7 @@ from TraiterFileAbsolu import *
 from Client import *
 from RandomGen import *
 from TraiterFileOrdinaire import *
+from Sortie import *
 
 tempsSimulation = 960
 nbStationMin = 4
@@ -18,6 +19,10 @@ def CalculCout (nbStation, tabCout):
     fileEjecte = []
     fileOrdinaire = []
     temps = 0
+
+    #VersoTest
+    if(nbStation == nbStationMin or nbStation == (nbStationMin + 5)):
+        SortirNbStation(nbStation)      
     
     while(temps < tempsSimulation):
         #première partie: s'occuper de m'arriver des clients
@@ -33,8 +38,15 @@ def CalculCout (nbStation, tabCout):
         cumOrdinaire = len(fileOrdinaire) + len(fileEjecte)
         coutStat = GetCoutStation(tabStation)
         tabCout[nbStation - nbStationMin] += cumOrdinaire * (float(25)/60) + len(fileAbsolu) * (float(40)/60) + coutStat
-        
+
+        #VersoTest
+        if (temps < 30 and (nbStation == nbStationMin or nbStation == (nbStationMin + 5))):            
+            tabStation.sort(key = lambda client: client.dureeService)
+            SortirArriveeClient(arriveeClient)
+            SortirTabStation(tabStation, fileAbsolu, fileOrdinaire, fileEjecte, nbStation)            
+
         temps += 1
+    
         
         
     
@@ -74,8 +86,6 @@ def GetCoutStation(tabStation):
                  
         
         i += 1
-    
-    
     
     return coutS
     
